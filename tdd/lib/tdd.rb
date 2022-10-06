@@ -52,3 +52,28 @@ def stock_picker(prices)
     
     profit_days
 end
+
+class Towers
+    attr_reader :board
+    def initialize (board = [[3, 2, 1], [], []])
+        @board = board
+    end
+
+    def get_move
+        puts "grab a disc from 1-3"
+        start = gets.chomp.to_i - 1 
+        puts "place the disc from 1-3"
+        stop = gets.chomp.to_i - 1
+        [start, stop]
+    end
+
+    def valid_move?(move)
+        return false if move.any? { |pos| !pos.between?(0,2)}
+        return false if board[move.first].empty? 
+        return true if board[move.last].empty? || board[move.last][-1] > board[move.first][-1] 
+        false
+    end
+
+    def move(
+    
+end

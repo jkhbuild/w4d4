@@ -71,3 +71,30 @@ describe "#stock_picker" do
     end
     
 end
+
+describe Towers do 
+    subject(:tower) { Towers.new }
+    describe "#initialize" do
+        it "should start with a valid board of 1 filled array, and 2 empty arrays" do
+            expect(tower.board).to eq([[3, 2, 1], [], []])
+        end
+    end
+    describe "#valid_move?" do 
+        it "should return falseif invalid move" do
+            invalid_move = [4, 4]
+            expect(tower.valid_move?(invalid_move)).to eq(false)
+        end
+        it "should return false if invalid grab" do
+            invalid_move = [2, 3]
+            expect(tower.valid_move?(invalid_move)).to eq(false)
+        end
+        it "should return false if invalid place" do
+            tower = Towers.new([[1], [2], [3]])
+            invalid_move = [2, 1]
+            expect(tower.valid_move?(invalid_move)).to eq(false)
+        end
+        it "should return true if valid move" do
+            expect(tower.valid_move?([0, 1])).to eq(true)
+        end
+    end
+end
