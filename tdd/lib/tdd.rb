@@ -84,4 +84,12 @@ class Towers
     def game_over?
         board == starting_board.reverse
     end
+
+    def play
+        until game_over?
+            move = get_move
+            move(move) if valid_move?(move)
+        end
+        "game over"
+    end
 end

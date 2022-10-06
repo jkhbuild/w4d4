@@ -112,4 +112,11 @@ describe Towers do
         end
     end
 
+    describe "#play" do
+        it "move to respond to play" do
+            tower.board = tower.board.reverse
+            expect(tower.play).to eq("game over")
+        end
+    end
+
 end
