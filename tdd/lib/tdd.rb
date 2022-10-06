@@ -17,3 +17,21 @@ class Array
         new_arr
     end
 end
+
+def my_transpose(matrix)
+    raise ArgumentError if !matrix.is_a?(Array)
+
+    matrix.each do |array|
+        raise "invalid matrix" if matrix.length != (array.length)
+    end
+
+    transposed = Array.new(matrix.length) {Array.new}
+    matrix.each do |array|
+        array.each_with_index do |ele, j|
+            transposed[j] << ele
+        end
+    end
+    transposed
+        
+
+end
