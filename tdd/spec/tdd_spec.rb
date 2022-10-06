@@ -50,3 +50,24 @@ describe "#my_transpose" do
     end
 
 end
+
+describe "#stock_picker" do
+    subject(:prices) { [150, 80, 100, 90, 150, 200, 60, 160] }
+    # prices = "prices"
+    it "should raise an error if it doesn't receive an Array" do
+        expect {stock_picker("hello")}.to raise_error("invalid input")
+    end
+
+    it "should output an array of indices" do
+        expect(stock_picker(prices).is_a? Array).to be true
+    end
+
+    it "should output only a pair of days" do
+        expect(stock_picker(prices).length).to eq(2)
+    end
+
+    it "sould return the [buy, sell] days for max profit" do
+        expect(stock_picker(prices)).to eq([1,5])
+    end
+    
+end

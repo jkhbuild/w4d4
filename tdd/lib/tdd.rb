@@ -33,5 +33,22 @@ def my_transpose(matrix)
     end
     transposed
         
+end
 
+def stock_picker(prices)
+    raise "invalid input" if !prices.is_a? Array
+    max_profit = 0
+    profit_days = []
+
+    prices.each_with_index do |buy_price, i1|
+        prices.each_with_index do |sell_price, i2|
+            profit = sell_price - buy_price
+            if i2 > i1 && profit > max_profit
+                max_profit = profit 
+                profit_days = [i1, i2]
+            end
+        end
+    end
+    
+    profit_days
 end
