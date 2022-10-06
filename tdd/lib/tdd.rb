@@ -54,8 +54,10 @@ def stock_picker(prices)
 end
 
 class Towers
-    attr_reader :board
+    attr_reader :starting_board
+    attr_accessor :board
     def initialize (board = [[3, 2, 1], [], []])
+        @starting_board = board
         @board = board
     end
 
@@ -74,6 +76,12 @@ class Towers
         false
     end
 
-    def move(
+    def move(move)
+        board[move.last] << board[move.first].pop
+        true
+    end
     
+    def game_over?
+        board == starting_board.reverse
+    end
 end

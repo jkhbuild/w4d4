@@ -97,4 +97,19 @@ describe Towers do
             expect(tower.valid_move?([0, 1])).to eq(true)
         end
     end
+
+    describe "#move" do
+        it "should take a disc and place it in a new position" do
+            tower.move([0,1])
+            expect(tower.board).to eq([[3, 2], [1], []])
+        end
+    end
+
+    describe "#game_over?" do
+        it "should return true if game is over" do
+            tower.board = tower.board.reverse
+            expect(tower.game_over?).to eq(true)
+        end
+    end
+
 end
